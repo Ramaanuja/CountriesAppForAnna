@@ -18,6 +18,7 @@ class MainActivity : AppCompatActivity() {
             val countryName = binding.countryNameEditText.text.toString()
 
             lifecycleScope.launch {
+                binding.progressBar.visibility = View.VISIBLE
                 val countries = restCountriesApi.getCountryByName(countryName)
                 val country = countries[0]
 
@@ -28,6 +29,7 @@ class MainActivity : AppCompatActivity() {
                 binding.languagesTextView.text = languagesToString(country.languages)
 
                 loadSvg(binding.imageView, country.flag)
+                binding.progressBar.visibility = View.GONE
 
                 binding.resultLayout.visibility = View.VISIBLE
                 binding.statusLayout.visibility = View.INVISIBLE
