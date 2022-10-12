@@ -36,7 +36,8 @@ class MainActivity : AppCompatActivity() {
 
     fun setObservers(){
         viewModel.countryState.observe (this){ country->
-            showCountryInfo(country)
+            if(country != null)
+                showCountryInfo(country)
         }
 
         viewModel.progressBarIsVisible.observe (this){isVisible->
